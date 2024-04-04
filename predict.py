@@ -4,6 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import load_img, img_to_array
 import numpy as np
 from PIL import Image
+import logging
 
 model = load_model('my_model.h5')
 
@@ -17,6 +18,8 @@ def make_prediction(image):
     x = np.expand_dims(x, axis=0)
     
     images = np.vstack([x])
+    
+    logging.info(f"images {str(images)}")
     classes = model.predict(images, batch_size =10)
     
     print(classes)

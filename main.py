@@ -1,6 +1,7 @@
 import numpy as np
 from flask import Flask, request
 from predict import make_prediction
+import logging 
 
 app = Flask(__name__)
 
@@ -23,6 +24,7 @@ def predict():
         return 'No file part in the request', 400
     
     file = request.files['image']
+    logging.info(f'File is {str(file)}')
     
     if file.filename == '':
         return 'No selected file.', 400

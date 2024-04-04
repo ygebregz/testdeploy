@@ -1,1 +1,2 @@
-runtime: python38
+runtime: python311
+entrypoint: gunicorn -b :$PORT gcp-deployment:app

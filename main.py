@@ -10,14 +10,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def index():
     """Basic HTML response."""
-    body = (
-        "<html>"
-        "<body style='padding: 10px;'>"
-        "<h1>Welcome to my Flask API</h1>"
-        "</body>"
-        "</html>"
-    )
-    return body
+    return render_template("index.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -36,7 +29,7 @@ def predict():
     logging.debug("returning result from endpoint")
     
   
-    return pred, 200
+    return render_template("results.html", prediction = pred, comment="asd")
 
 if __name__ == '__main__':
     app.run()

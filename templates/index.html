@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human or Horse?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #666;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .btn-info {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #fileToUpload {
+            display: none;
+        }
+        #preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h4>Image Classification for Human or Horse</h4>
+        </div>
+    </header>
+
+    <div class="container">
+        <form action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data" id="uploadForm">
+            <label for="fileToUpload" class="btn-info"><i class="fas fa-cloud-upload-alt"></i> Upload Image</label>
+            <input type="file" name="image" id="fileToUpload" onchange="previewImage()">
+            <input type="submit" class="btn-info" value="Predict the Image">
+        </form>
+
+        <div id="preview"></div>
+    </div>
+
+    <script>
+        function previewImage() {
+            var fileInput = document.getElementById('fileToUpload');
+            var preview = document.getElementById('preview');
+
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>

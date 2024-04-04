@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human or Horse?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #666;
+        }
+        .results {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 24px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h2>Classification Results</h2>
+        </div>
+    </header>
+
+    <p style="color:blue; font-size:20px; text-align: center;"><b>Image Prediction</b></p>
+    <div class="results">
+        <h4>This is a: {{ prediction }}</h4>
+    </div>
+
+</body>
+</html>

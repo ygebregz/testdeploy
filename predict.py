@@ -23,10 +23,9 @@ def make_prediction(image):
     images = np.vstack([x])
     
     classes = model.predict(images, batch_size =10)
-    
     print(classes)
     logging.warning("returning a result")
     if classes[0] > 0.5:
-        return "it is a human"
-    return "it is a horse"
+        return "Human"
+    return "Horse"
 

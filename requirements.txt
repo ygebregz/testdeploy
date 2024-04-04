@@ -1,5 +1,4 @@
 Flask
-joblib
 numpy
 pandas
 Pillow
